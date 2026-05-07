@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Event Room Scheduler</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Internal Events</p>
+          <div class="title-row">
+            <h1>Room Scheduler</h1>
+            <span class="status-pill" id="syncStatus">Local</span>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-button" type="button" id="exportButton" aria-label="Export my agenda" title="Export my agenda">
+            <span aria-hidden="true">ICS</span>
+          </button>
+          <button class="icon-button" type="button" id="resetButton" aria-label="Reset sign-ups" title="Reset sign-ups">
+            <span aria-hidden="true">Reset</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <aside class="sidebar" aria-label="Scheduler controls">
+          <section class="panel attendee-panel">
+            <div class="panel-heading">
+              <h2>Attendee</h2>
+              <span class="status-pill" id="attendeeStatus">Guest</span>
+            </div>
+            <form class="attendee-form" id="attendeeForm">
+              <label>
+                <span>Name</span>
+                <input id="nameInput" name="name" autocomplete="name" placeholder="Alex Morgan">
+              </label>
+              <label>
+                <span>Email</span>
+                <input id="emailInput" name="email" type="email" autocomplete="email" placeholder="alex@example.com">
+              </label>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <h2>Filters</h2>
+              <button class="text-button" type="button" id="clearFiltersButton">Clear</button>
+            </div>
+            <div class="filter-stack">
+              <label>
+                <span>Search</span>
+                <input id="searchInput" placeholder="Topic, host, keyword">
+              </label>
+              <label>
+                <span>Track</span>
+                <select id="trackSelect"></select>
+              </label>
+              <div>
+                <span class="field-label">Room</span>
+                <div class="segmented" id="roomFilter" role="group" aria-label="Room filter"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel my-agenda-panel">
+            <div class="panel-heading">
+              <h2>My Agenda</h2>
+              <span class="count" id="myAgendaCount">0</span>
+            </div>
+            <div class="agenda-list" id="myAgendaList"></div>
+          </section>
+        </aside>
+
+        <section class="workspace" aria-label="Event agenda">
+          <div class="summary-strip" id="summaryStrip"></div>
+          <div class="room-grid" id="roomGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="roomTemplate">
+      <article class="room-column">
+        <div class="room-header">
+          <div>
+            <p class="room-kicker"></p>
+            <h2></h2>
+          </div>
+          <span class="room-capacity"></span>
+        </div>
+        <div class="events"></div>
+      </article>
+    </template>
+
+    <template id="eventTemplate">
+      <article class="event-card">
+        <div class="event-time"></div>
+        <div class="event-main">
+          <div class="event-title-row">
+            <h3></h3>
+            <span class="track-badge"></span>
+          </div>
+          <p class="event-meta"></p>
+          <p class="event-summary"></p>
+          <div class="capacity-row">
+            <div class="meter" aria-hidden="true"><span></span></div>
+            <span class="capacity-copy"></span>
+          </div>
+          <div class="signup-row">
+            <div class="attendee-chips"></div>
+            <button class="primary-action" type="button"></button>
+          </div>
+          <p class="event-note" role="status"></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

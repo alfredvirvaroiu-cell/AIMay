@@ -1,0 +1,55 @@
+{
+  "a-0900": {
+    "confirmed": [
+      {
+        "name": "Alfred Virvaroiu",
+        "email": "alfred.virvaroiu@oracle.com"
+      }
+    ],
+    "waitlist": []
+  },
+  "b-0900": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "c-0900": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "a-1000": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "b-1000": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "c-1000": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "a-1100": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "b-1100": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "c-1100": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "a-1300": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "b-1300": {
+    "confirmed": [],
+    "waitlist": []
+  },
+  "c-1300": {
+    "confirmed": [],
+    "waitlist": []
+  }
+}

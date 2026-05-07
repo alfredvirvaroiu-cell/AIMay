@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: event-room-scheduler
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit

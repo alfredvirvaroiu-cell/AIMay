@@ -1,0 +1,12 @@
+{
+  "name": "event-room-scheduler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Internal event scheduler for three rooms with attendee sign-ups.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

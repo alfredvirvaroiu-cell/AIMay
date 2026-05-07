@@ -1,0 +1,157 @@
+{
+  "eventDate": "2026-05-07",
+  "rooms": [
+    {
+      "id": "room-a",
+      "name": "Room A",
+      "floor": "Level 1",
+      "capacityLabel": "36 seats"
+    },
+    {
+      "id": "room-b",
+      "name": "Room B",
+      "floor": "Level 1",
+      "capacityLabel": "28 seats"
+    },
+    {
+      "id": "room-c",
+      "name": "Room C",
+      "floor": "Level 2",
+      "capacityLabel": "42 seats"
+    }
+  ],
+  "events": [
+    {
+      "id": "a-0900",
+      "roomId": "room-a",
+      "title": "Regional Strategy Kickoff",
+      "track": "Leadership",
+      "host": "Mina Patel",
+      "start": "09:00",
+      "end": "09:45",
+      "capacity": 8,
+      "summary": "Priorities, ownership, and operating rhythm for the quarter."
+    },
+    {
+      "id": "b-0900",
+      "roomId": "room-b",
+      "title": "Customer Health Reviews",
+      "track": "Customer Success",
+      "host": "Jon Becker",
+      "start": "09:00",
+      "end": "09:45",
+      "capacity": 7,
+      "summary": "Review account health signals and escalation patterns."
+    },
+    {
+      "id": "c-0900",
+      "roomId": "room-c",
+      "title": "Platform Roadmap Briefing",
+      "track": "Product",
+      "host": "Priya Shah",
+      "start": "09:00",
+      "end": "09:45",
+      "capacity": 10,
+      "summary": "Upcoming capabilities, release timing, and field impact."
+    },
+    {
+      "id": "a-1000",
+      "roomId": "room-a",
+      "title": "Executive Q&A",
+      "track": "Leadership",
+      "host": "Nora Kelly",
+      "start": "10:00",
+      "end": "10:45",
+      "capacity": 8,
+      "summary": "Open discussion with regional leaders."
+    },
+    {
+      "id": "b-1000",
+      "roomId": "room-b",
+      "title": "Renewal Risk Workshop",
+      "track": "Customer Success",
+      "host": "Theo Martin",
+      "start": "10:00",
+      "end": "10:45",
+      "capacity": 7,
+      "summary": "Triage renewal risks and map next actions."
+    },
+    {
+      "id": "c-1000",
+      "roomId": "room-c",
+      "title": "AI Enablement Lab",
+      "track": "Enablement",
+      "host": "Sam Rivera",
+      "start": "10:00",
+      "end": "10:45",
+      "capacity": 10,
+      "summary": "Hands-on practice with prompts, review flows, and governance."
+    },
+    {
+      "id": "a-1100",
+      "roomId": "room-a",
+      "title": "Partner Motions",
+      "track": "Growth",
+      "host": "Elena Rossi",
+      "start": "11:00",
+      "end": "11:45",
+      "capacity": 8,
+      "summary": "Joint planning across partner-led customer programs."
+    },
+    {
+      "id": "b-1100",
+      "roomId": "room-b",
+      "title": "Implementation Clinics",
+      "track": "Delivery",
+      "host": "Owen Lee",
+      "start": "11:00",
+      "end": "11:45",
+      "capacity": 7,
+      "summary": "Common blockers, reusable playbooks, and delivery checkpoints."
+    },
+    {
+      "id": "c-1100",
+      "roomId": "room-c",
+      "title": "Data Quality Roundtable",
+      "track": "Operations",
+      "host": "Aisha Khan",
+      "start": "11:00",
+      "end": "11:45",
+      "capacity": 10,
+      "summary": "Pipeline ownership, dashboard trust, and data stewardship."
+    },
+    {
+      "id": "a-1300",
+      "roomId": "room-a",
+      "title": "Leadership Retro",
+      "track": "Leadership",
+      "host": "Mina Patel",
+      "start": "13:00",
+      "end": "13:45",
+      "capacity": 8,
+      "summary": "What to keep, change, and escalate after the morning sessions."
+    },
+    {
+      "id": "b-1300",
+      "roomId": "room-b",
+      "title": "Adoption Planning",
+      "track": "Customer Success",
+      "host": "Jon Becker",
+      "start": "13:00",
+      "end": "13:45",
+      "capacity": 7,
+      "summary": "Build adoption plans around measurable customer outcomes."
+    },
+    {
+      "id": "c-1300",
+      "roomId": "room-c",
+      "title": "Demo Studio",
+      "track": "Product",
+      "host": "Priya Shah",
+      "start": "13:00",
+      "end": "13:45",
+      "capacity": 10,
+      "summary": "Short demos and discussion on reusable customer narratives."
+    }
+  ]
+}
