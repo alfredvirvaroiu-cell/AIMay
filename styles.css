@@ -300,7 +300,7 @@ select:focus {
 
 .room-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
   align-items: start;
 }
@@ -308,6 +308,14 @@ select:focus {
 .room-column {
   min-width: 0;
   overflow: hidden;
+}
+
+.agenda-column {
+  grid-column: 1 / -1;
+}
+
+.agenda-column .events {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .room-header {
@@ -396,6 +404,37 @@ select:focus {
 
 .event-summary {
   margin-bottom: 12px;
+}
+
+.presentation-list {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding-left: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.presentation-list li::marker {
+  content: "";
+}
+
+.presentation-list strong,
+.presentation-list span {
+  display: block;
+}
+
+.presentation-list strong {
+  color: var(--ink);
+  font-size: 0.84rem;
+}
+
+.presentation-list span {
+  margin-top: 2px;
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .capacity-row {
@@ -543,9 +582,25 @@ select:focus {
   }
 }
 
+@media (max-width: 1320px) {
+  .room-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .room-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 950px) {
   .summary-strip,
   .room-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .agenda-column .events {
     grid-template-columns: 1fr;
   }
 

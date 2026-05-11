@@ -1,141 +1,185 @@
 const defaultRooms = [
-  { id: "room-a", name: "Room A", floor: "Level 1", capacityLabel: "36 seats" },
-  { id: "room-b", name: "Room B", floor: "Level 1", capacityLabel: "28 seats" },
-  { id: "room-c", name: "Room C", floor: "Level 2", capacityLabel: "42 seats" }
+  { id: "gf1", name: "GF01", floor: "Ground Floor", capacityLabel: "20 seats" },
+  { id: "gf2", name: "GF02", floor: "Ground Floor", capacityLabel: "20 seats" },
+  { id: "gf1-2", name: "GF01&02", floor: "Ground Floor", capacityLabel: "25 seats" },
+  { id: "gf3", name: "GF08", floor: "Ground Floor", capacityLabel: "8 seats" },
+  { id: "gf9", name: "GF09", floor: "Ground Floor", capacityLabel: "8 seats" },
+  { id: "cafeteria", name: "Cafeteria", floor: "Ground Floor", capacityLabel: "60 seats" }
 ];
 
 const defaultEvents = [
   {
-    id: "a-0900",
-    roomId: "room-a",
-    title: "Regional Strategy Kickoff",
-    track: "Leadership",
-    host: "Mina Patel",
-    start: "09:00",
-    end: "09:45",
+    id: "cafeteria-2026-05-14-1630",
+    roomId: "cafeteria",
+    title: "Coffee & Kick Off",
+    track: "Networking",
+    date: "2026-05-14",
+    start: "16:30",
+    end: "17:00",
+    capacity: 60,
+    summary: "Kick off the event over coffee in the Cafeteria."
+  },
+  {
+    id: "cafeteria-2026-05-14-1200",
+    roomId: "cafeteria",
+    title: "Lunch Break",
+    track: "Networking",
+    date: "2026-05-14",
+    start: "19:00",
+    end: "20:00",
+    capacity: 60,
+    summary: "Lunch break in the Cafeteria."
+  },
+  {
+    id: "gf1-2026-05-14-1700",
+    roomId: "gf1",
+    title: "New Tool - Who this?",
+    track: "Deep Dive",
+    host: "Cip Amarie",
+    date: "2026-05-14",
+    start: "17:00",
+    end: "18:00",
+    capacity: 20,
+    summary: "Deep dive session led by Cip Amarie.",
+    description: "A Codex walkthrough"
+  },
+  {
+    id: "gf1-2026-05-14-1800",
+    roomId: "gf1",
+    title: "Working with Projects in Chat GPT",
+    track: "Deep Dive",
+    host: "Catalin Buzescu",
+    date: "2026-05-14",
+    start: "18:00",
+    end: "18:45",
+    capacity: 20,
+    summary: "Deep Dive session led by Catalin Buzescu."
+  },
+  {
+    id: "gf3-2026-05-14-1700",
+    roomId: "gf3",
+    title: "Setting up daily/weekly tasks for your GPT",
+    track: "TechBar",
+    host: "Alex Cirlan",
+    date: "2026-05-14",
+    start: "17:00",
+    end: "17:45",
     capacity: 8,
-    summary: "Priorities, ownership, and operating rhythm for the quarter."
+    summary: "TechBar session led by Alex Cirlan.",
+    description: "TechBars are a hands-on experience where you can get help and insight on building your AI skills"
   },
   {
-    id: "b-0900",
-    roomId: "room-b",
-    title: "Customer Health Reviews",
-    track: "Customer Success",
-    host: "Jon Becker",
-    start: "09:00",
-    end: "09:45",
-    capacity: 7,
-    summary: "Review account health signals and escalation patterns."
-  },
-  {
-    id: "c-0900",
-    roomId: "room-c",
-    title: "Platform Roadmap Briefing",
-    track: "Product",
-    host: "Priya Shah",
-    start: "09:00",
-    end: "09:45",
-    capacity: 10,
-    summary: "Upcoming capabilities, release timing, and field impact."
-  },
-  {
-    id: "a-1000",
-    roomId: "room-a",
-    title: "Executive Q&A",
-    track: "Leadership",
-    host: "Nora Kelly",
-    start: "10:00",
-    end: "10:45",
+    id: "gf3-2026-05-14-1800",
+    roomId: "gf3",
+    title: "Using Codex for non-tech",
+    track: "TechBar",
+    host: "Cip Amarie",
+    date: "2026-05-14",
+    start: "18:00",
+    end: "18:45",
     capacity: 8,
-    summary: "Open discussion with regional leaders."
+    summary: "TechBar session led by Cip Amarie.",
+    description: "TechBars are a hands-on experience where you can get help and insight on building your AI skills"
   },
   {
-    id: "b-1000",
-    roomId: "room-b",
-    title: "Renewal Risk Workshop",
-    track: "Customer Success",
-    host: "Theo Martin",
-    start: "10:00",
-    end: "10:45",
-    capacity: 7,
-    summary: "Triage renewal risks and map next actions."
-  },
-  {
-    id: "c-1000",
-    roomId: "room-c",
-    title: "AI Enablement Lab",
-    track: "Enablement",
-    host: "Sam Rivera",
-    start: "10:00",
-    end: "10:45",
-    capacity: 10,
-    summary: "Hands-on practice with prompts, review flows, and governance."
-  },
-  {
-    id: "a-1100",
-    roomId: "room-a",
-    title: "Partner Motions",
-    track: "Growth",
-    host: "Elena Rossi",
-    start: "11:00",
-    end: "11:45",
+    id: "gf9-2026-05-14-1700",
+    roomId: "gf9",
+    title: "Building AI Adoption Reports",
+    track: "TechBar",
+    host: "Ryan MacKay",
+    date: "2026-05-14",
+    start: "17:00",
+    end: "17:45",
     capacity: 8,
-    summary: "Joint planning across partner-led customer programs."
+    summary: "TechBar session led by Ryan MacKay.",
+    description: "TechBars are a hands-on experience where you can get help and insight on building your AI skills"
   },
   {
-    id: "b-1100",
-    roomId: "room-b",
-    title: "Implementation Clinics",
-    track: "Delivery",
-    host: "Owen Lee",
-    start: "11:00",
-    end: "11:45",
-    capacity: 7,
-    summary: "Common blockers, reusable playbooks, and delivery checkpoints."
-  },
-  {
-    id: "c-1100",
-    roomId: "room-c",
-    title: "Data Quality Roundtable",
-    track: "Operations",
-    host: "Aisha Khan",
-    start: "11:00",
-    end: "11:45",
-    capacity: 10,
-    summary: "Pipeline ownership, dashboard trust, and data stewardship."
-  },
-  {
-    id: "a-1300",
-    roomId: "room-a",
-    title: "Leadership Retro",
-    track: "Leadership",
-    host: "Mina Patel",
-    start: "13:00",
-    end: "13:45",
+    id: "gf9-2026-05-14-1800",
+    roomId: "gf9",
+    title: "Connect your GPT to Slack",
+    track: "TechBar",
+    host: "Anne Diaconu",
+    date: "2026-05-14",
+    start: "18:00",
+    end: "18:45",
     capacity: 8,
-    summary: "What to keep, change, and escalate after the morning sessions."
+    summary: "TechBar session led by Anne Diaconu.",
+    description: "TechBars are a hands-on experience where you can get help and insight on building your AI skills"
   },
   {
-    id: "b-1300",
-    roomId: "room-b",
-    title: "Adoption Planning",
-    track: "Customer Success",
-    host: "Jon Becker",
-    start: "13:00",
-    end: "13:45",
-    capacity: 7,
-    summary: "Build adoption plans around measurable customer outcomes."
+    id: "gf2-2026-05-14-1800",
+    roomId: "gf2",
+    title: "Using Chat GPT",
+    track: "Quickfire",
+    date: "2026-05-14",
+    start: "17:00",
+    end: "17:45",
+    capacity: 20,
+    summary: "Three short presentations in GF2.",
+    presentations: [
+      {
+        host: "Flori Munteanu & Iulia Mocanescu",
+        title: "Shared Framework for Product & AI Adoption"
+      },
+      {
+        host: "Mihaela Anghelina",
+        title: "Creating Skills in Chat GPT"
+      },
+      {
+        host: "Andrei Valsan",
+        title: "Board room GPT and Automatic adoption decks"
+      }
+    ]
   },
   {
-    id: "c-1300",
-    roomId: "room-c",
-    title: "Demo Studio",
-    track: "Product",
-    host: "Priya Shah",
-    start: "13:00",
-    end: "13:45",
-    capacity: 10,
-    summary: "Short demos and discussion on reusable customer narratives."
+    id: "gf2-using-chat-gpt-2026-05-14-1800",
+    roomId: "gf2",
+    title: "Customer Facing",
+    track: "Quickfire",
+    date: "2026-05-14",
+    start: "18:00",
+    end: "18:45",
+    capacity: 20,
+    summary: "Three short presentations in GF2.",
+    presentations: [
+      {
+        host: "Alex Dobrin",
+        title: "AI Adoption Catalyst"
+      },
+      {
+        host: "Dan Constantinescu",
+        title: "AI Success Navigator"
+      },
+      {
+        host: "Stefan Berechet",
+        title: "Redwood slide builder"
+      }
+    ]
+  },
+  {
+    id: "gf1-2-2026-05-14-2130",
+    roomId: "gf1-2",
+    title: "Leadership Panel",
+    track: "Panel",
+    date: "2026-05-14",
+    start: "21:30",
+    end: "22:00",
+    capacity: 50,
+    summary: "Leadership panel discussion in GF1&2."
+  },
+  {
+    id: "gf1-2-2026-05-14-2000",
+    roomId: "gf1-2",
+    title: "How to train your GPT",
+    track: "Workshop",
+    host: "Cip Amarie",
+    date: "2026-05-14",
+    start: "20:00",
+    end: "21:15",
+    capacity: 25,
+    summary: "Instructor led workshop by Cip Amarie.",
+    description: "Instructor led session on how to create an agent and train it into a formidable Autonomous Cloud Executive. Bring your laptop."
   }
 ];
 
@@ -262,8 +306,30 @@ function attendeeInitials(attendee) {
   return initials.toUpperCase();
 }
 
+function getEventDate(event) {
+  return event.date || state.eventDate;
+}
+
+function formatEventDate(event) {
+  const date = new Date(`${getEventDate(event)}T00:00:00`);
+  return date.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+}
+
 function formatTimeRange(event) {
-  return `${event.start} to ${event.end}`;
+  return `${formatEventDate(event)}, ${event.start} to ${event.end}`;
+}
+
+function getPresentationText(event) {
+  return (event.presentations || [])
+    .map((presentation) => `${presentation.title} ${presentation.host}`)
+    .join(" ");
+}
+
+function getEventDescription(event) {
+  const description = event.description || event.summary;
+  const presentationLines = (event.presentations || [])
+    .map((presentation, index) => `${index + 1}. ${presentation.title} - ${presentation.host}`);
+  return [description, ...presentationLines].filter(Boolean).join("\n");
 }
 
 function timeToMinutes(value) {
@@ -271,7 +337,16 @@ function timeToMinutes(value) {
   return hours * 60 + minutes;
 }
 
+function getEventSortValue(event) {
+  return `${getEventDate(event)}T${event.start}`;
+}
+
+function compareEventsBySchedule(first, second) {
+  return getEventSortValue(first).localeCompare(getEventSortValue(second));
+}
+
 function eventsOverlap(first, second) {
+  if (getEventDate(first) !== getEventDate(second)) return false;
   return timeToMinutes(first.start) < timeToMinutes(second.end)
     && timeToMinutes(second.start) < timeToMinutes(first.end);
 }
@@ -296,7 +371,7 @@ function getMyConfirmedEvents() {
 
   return events
     .filter((event) => getRegistration(event.id).confirmed.some((person) => attendeeKey(person) === key))
-    .sort((a, b) => timeToMinutes(a.start) - timeToMinutes(b.start));
+    .sort(compareEventsBySchedule);
 }
 
 function getConflictFor(event) {
@@ -434,7 +509,7 @@ function getFilteredEvents() {
     const room = getRoom(event.roomId);
     const matchesRoom = state.filters.room === "All" || event.roomId === state.filters.room;
     const matchesTrack = state.filters.track === "All" || event.track === state.filters.track;
-    const searchable = [event.title, event.track, event.host, event.summary, room?.name || ""]
+    const searchable = [event.title, event.track, event.host || "", event.summary, getPresentationText(event), getEventDate(event), room?.name || ""]
       .join(" ")
       .toLowerCase();
     return matchesRoom && matchesTrack && (!search || searchable.includes(search));
@@ -495,6 +570,11 @@ function renderRooms() {
   const filteredEvents = getFilteredEvents();
   elements.roomGrid.innerHTML = "";
 
+  if (state.filters.room === "All") {
+    renderChronologicalAgenda(filteredEvents);
+    return;
+  }
+
   const visibleRooms = rooms.filter((room) => {
     return state.filters.room === "All" || state.filters.room === room.id;
   });
@@ -503,14 +583,16 @@ function renderRooms() {
     const roomNode = elements.roomTemplate.content.firstElementChild.cloneNode(true);
     const roomEvents = filteredEvents
       .filter((event) => event.roomId === room.id)
-      .sort((a, b) => timeToMinutes(a.start) - timeToMinutes(b.start));
+      .sort(compareEventsBySchedule);
 
     const confirmedCount = roomEvents.reduce((sum, event) => sum + getRegistration(event.id).confirmed.length, 0);
     const capacity = roomEvents.reduce((sum, event) => sum + event.capacity, 0);
 
     roomNode.querySelector(".room-kicker").textContent = room.floor;
     roomNode.querySelector("h2").textContent = room.name;
-    roomNode.querySelector(".room-capacity").textContent = `${confirmedCount}/${capacity}`;
+    const roomCapacity = roomNode.querySelector(".room-capacity");
+    roomCapacity.textContent = "";
+    roomCapacity.hidden = true;
 
     const eventsContainer = roomNode.querySelector(".events");
     if (roomEvents.length === 0) {
@@ -526,6 +608,32 @@ function renderRooms() {
   });
 }
 
+function renderChronologicalAgenda(filteredEvents) {
+  const agendaNode = elements.roomTemplate.content.firstElementChild.cloneNode(true);
+  const sortedEvents = filteredEvents.sort(compareEventsBySchedule);
+  const confirmedCount = sortedEvents.reduce((sum, event) => sum + getRegistration(event.id).confirmed.length, 0);
+
+  agendaNode.classList.add("agenda-column");
+  agendaNode.querySelector(".room-kicker").textContent = `${sortedEvents.length} sessions`;
+  agendaNode.querySelector("h2").textContent = "All Rooms";
+
+  const roomCapacity = agendaNode.querySelector(".room-capacity");
+  roomCapacity.textContent = "";
+  roomCapacity.hidden = true;
+
+  const eventsContainer = agendaNode.querySelector(".events");
+  if (sortedEvents.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "empty-state";
+    empty.textContent = "No matching sessions";
+    eventsContainer.appendChild(empty);
+  } else {
+    sortedEvents.forEach((event) => eventsContainer.appendChild(renderEvent(event)));
+  }
+
+  elements.roomGrid.appendChild(agendaNode);
+}
+
 function renderEvent(event) {
   const node = elements.eventTemplate.content.firstElementChild.cloneNode(true);
   const registration = getRegistration(event.id);
@@ -536,11 +644,16 @@ function renderEvent(event) {
   const conflict = hasAttendee() ? getConflictFor(event) : null;
   const room = getRoom(event.roomId);
 
-  node.querySelector(".event-time").innerHTML = `${event.start}<br>${event.end}`;
+  node.querySelector(".event-time").innerHTML = `${formatEventDate(event)}<br>${event.start}<br>${event.end}`;
   node.querySelector("h3").textContent = event.title;
   node.querySelector(".track-badge").textContent = event.track;
-  node.querySelector(".event-meta").textContent = `${event.host} | ${room?.name || "Room"}`;
-  node.querySelector(".event-summary").textContent = event.summary;
+  node.querySelector(".event-meta").textContent = event.host
+    ? `${event.host} | ${room?.name || "Room"}`
+    : room?.name || "Room";
+  const summary = node.querySelector(".event-summary");
+  summary.textContent = event.description || "";
+  summary.hidden = !event.description;
+  renderPresentations(node, event);
   node.querySelector(".meter span").style.width = `${percentFull}%`;
   node.querySelector(".capacity-copy").textContent = remaining > 0
     ? `${remaining} open`
@@ -588,12 +701,30 @@ function renderEvent(event) {
   if (status === "waitlist") {
     note.textContent = `Waitlist position ${getWaitlistPosition(event.id)}`;
   } else if (conflict && status !== "confirmed") {
-    note.textContent = `Conflict: ${conflict.start} ${conflict.title}`;
+    note.textContent = `Conflict: ${formatTimeRange(conflict)} ${conflict.title}`;
   } else {
     note.textContent = "";
   }
 
   return node;
+}
+
+function renderPresentations(node, event) {
+  if (!event.presentations || event.presentations.length === 0) return;
+
+  const list = document.createElement("ul");
+  list.className = "presentation-list";
+  event.presentations.forEach((presentation) => {
+    const item = document.createElement("li");
+    const title = document.createElement("strong");
+    const host = document.createElement("span");
+    title.textContent = presentation.title;
+    host.textContent = presentation.host;
+    item.append(title, host);
+    list.appendChild(item);
+  });
+
+  node.querySelector(".event-summary").after(list);
 }
 
 function getWaitlistPosition(eventId) {
@@ -605,7 +736,7 @@ function renderMyAgenda() {
   const confirmedEvents = getMyConfirmedEvents();
   const waitlistedEvents = events
     .filter((event) => getCurrentAttendeeStatus(event.id) === "waitlist")
-    .sort((a, b) => timeToMinutes(a.start) - timeToMinutes(b.start));
+    .sort(compareEventsBySchedule);
 
   elements.myAgendaCount.textContent = confirmedEvents.length;
   elements.myAgendaList.innerHTML = "";
@@ -642,8 +773,8 @@ function exportAgenda() {
     return;
   }
 
-  const dateStamp = state.eventDate.replaceAll("-", "");
   const body = selectedEvents.map((event) => {
+    const dateStamp = getEventDate(event).replaceAll("-", "");
     const start = `${dateStamp}T${event.start.replace(":", "")}00`;
     const end = `${dateStamp}T${event.end.replace(":", "")}00`;
     return [
@@ -654,7 +785,7 @@ function exportAgenda() {
       `DTEND:${end}`,
       `SUMMARY:${escapeIcs(event.title)}`,
       `LOCATION:${escapeIcs(getRoom(event.roomId).name)}`,
-      `DESCRIPTION:${escapeIcs(`${event.host} | ${event.summary}`)}`,
+      `DESCRIPTION:${escapeIcs(event.host ? `${event.host} | ${getEventDescription(event)}` : getEventDescription(event))}`,
       "END:VEVENT"
     ].join("\r\n");
   }).join("\r\n");

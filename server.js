@@ -70,7 +70,12 @@ function timeToMinutes(value) {
   return hours * 60 + minutes;
 }
 
-function eventsOverlap(first, second) {
+function getEventDate(event, agenda) {
+  return event.date || agenda.eventDate;
+}
+
+function eventsOverlap(first, second, agenda) {
+  if (getEventDate(first, agenda) !== getEventDate(second, agenda)) return false;
   return timeToMinutes(first.start) < timeToMinutes(second.end)
     && timeToMinutes(second.start) < timeToMinutes(first.end);
 }
@@ -96,9 +101,9 @@ function getConfirmedEventsForAttendee(events, registrations, key) {
   });
 }
 
-function findConflict(events, registrations, targetEvent, key) {
+function findConflict(events, registrations, targetEvent, key, agenda) {
   return getConfirmedEventsForAttendee(events, registrations, key).find((event) => {
-    return event.id !== targetEvent.id && eventsOverlap(event, targetEvent);
+    return event.id !== targetEvent.id && eventsOverlap(event, targetEvent, agenda);
   });
 }
 
@@ -154,7 +159,7 @@ async function handleApi(request, response, url) {
     const currentStatus = getStatus(registration, key);
 
     if (currentStatus === "none") {
-      const conflict = findConflict(agenda.events, registrations, event, key);
+      const conflict = findConflict(agenda.events, registrations, event, key, agenda);
       if (conflict) {
         sendJson(response, 409, { error: `Time conflict with ${conflict.title}.`, registrations });
         return true;

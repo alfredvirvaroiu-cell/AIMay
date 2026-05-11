@@ -1,6 +1,6 @@
 # Event Room Scheduler
 
-A web-based scheduler for internal events across three rooms.
+A web-based scheduler for internal events across GF01, GF02, GF01&02, GF08, GF09, and Cafeteria.
 
 ## Run
 
@@ -24,7 +24,7 @@ Render free services do not provide persistent disks. This app will run on Rende
 
 ## What it does
 
-- Shows agendas for Room A, Room B, and Room C.
+- Shows agendas for GF01, GF02, GF01&02, GF08, GF09, and Cafeteria.
 - Lets an attendee join sessions or join a waitlist when capacity is full.
 - Prevents double-booking across overlapping sessions.
 - Promotes the first waitlisted attendee when a confirmed attendee leaves.
