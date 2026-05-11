@@ -22,6 +22,10 @@ The app can also be opened directly with `index.html`; in that mode sign-ups are
 
 Render free services do not provide persistent disks. This app will run on Render Free, but sign-ups stored in `data/signups.json` can be lost when the service restarts or redeploys. For a real event, use a paid persistent disk or move registrations to a database.
 
+This app now supports database-backed sign-ups. Set `DATABASE_URL` to a Postgres connection string and the server will store registrations in Postgres instead of `data/signups.json`.
+
+If you use the included `render.yaml` as a Render Blueprint, Render creates a Postgres database named `event-room-scheduler-db` and passes its connection string into the web service automatically. If you created the Render web service manually, create a Render Postgres database and add its internal connection string as the `DATABASE_URL` environment variable on the web service.
+
 ## What it does
 
 - Shows agendas for GF01, GF02, GF01&02, GF08, GF09, and Cafeteria.

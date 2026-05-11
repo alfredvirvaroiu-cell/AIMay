@@ -7,6 +7,9 @@ const root = __dirname;
 const dataDir = path.join(root, "data");
 const agendaPath = path.join(dataDir, "agenda.json");
 const signupsPath = path.join(dataDir, "signups.json");
+const databaseUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+let databasePool;
+let databaseReady = false;
 
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
@@ -28,6 +31,33 @@ async function readJson(filePath, fallback) {
 async function writeJson(filePath, value) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`);
+}
+
+async function getDatabasePool() {
+  if (!databaseUrl) return null;
+
+  if (!databasePool) {
+    const { Pool } = require("pg");
+    databasePool = new Pool({
+      connectionString: databaseUrl,
+      ssl: databaseUrl.includes("localhost") || databaseUrl.includes("127.0.0.1")
+        ? false
+        : { rejectUnauthorized: false }
+    });
+  }
+
+  if (!databaseReady) {
+    await databasePool.query(`
+      CREATE TABLE IF NOT EXISTS scheduler_state (
+        key TEXT PRIMARY KEY,
+        value JSONB NOT NULL,
+        updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      )
+    `);
+    databaseReady = true;
+  }
+
+  return databasePool;
 }
 
 function sendJson(response, status, value) {
@@ -112,7 +142,31 @@ async function readAgenda() {
 }
 
 async function readRegistrations() {
+  const pool = await getDatabasePool();
+  if (pool) {
+    const result = await pool.query("SELECT value FROM scheduler_state WHERE key = $1", ["registrations"]);
+    return result.rows[0]?.value || {};
+  }
+
   return readJson(signupsPath, {});
+}
+
+async function writeRegistrations(registrations) {
+  const pool = await getDatabasePool();
+  if (pool) {
+    await pool.query(
+      `
+        INSERT INTO scheduler_state (key, value, updated_at)
+        VALUES ($1, $2::jsonb, NOW())
+        ON CONFLICT (key)
+        DO UPDATE SET value = EXCLUDED.value, updated_at = NOW()
+      `,
+      ["registrations", JSON.stringify(registrations)]
+    );
+    return;
+  }
+
+  await writeJson(signupsPath, registrations);
 }
 
 async function handleApi(request, response, url) {
@@ -121,6 +175,7 @@ async function handleApi(request, response, url) {
   if (request.method === "GET" && url.pathname === "/api/health") {
     sendJson(response, 200, {
       status: "ok",
+      storage: databaseUrl ? "postgres" : "file",
       uptime: Math.round(process.uptime()),
       events: agenda.events.length,
       rooms: agenda.rooms.length
@@ -170,7 +225,7 @@ async function handleApi(request, response, url) {
       } else {
         registration.waitlist.push(attendee);
       }
-      await writeJson(signupsPath, registrations);
+      await writeRegistrations(registrations);
     }
 
     sendJson(response, 200, { registrations });
@@ -192,13 +247,18 @@ async function handleApi(request, response, url) {
       registration.confirmed.push(registration.waitlist.shift());
     }
 
-    await writeJson(signupsPath, registrations);
+    await writeRegistrations(registrations);
     sendJson(response, 200, { registrations });
     return true;
   }
 
   if (request.method === "POST" && url.pathname === "/api/reset") {
-    await writeJson(signupsPath, {});
+    if (process.env.ENABLE_RESET !== "true") {
+      sendJson(response, 403, { error: "Reset is disabled." });
+      return true;
+    }
+
+    await writeRegistrations({});
     sendJson(response, 200, { registrations: {} });
     return true;
   }

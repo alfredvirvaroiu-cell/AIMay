@@ -7,3 +7,13 @@ services:
     startCommand: npm start
     healthCheckPath: /api/health
     autoDeployTrigger: commit
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: event-room-scheduler-db
+          property: connectionString
+databases:
+  - name: event-room-scheduler-db
+    plan: free
+    databaseName: scheduler
+    user: scheduler
