@@ -211,6 +211,19 @@
       "capacity": 25,
       "summary": "Instructor led workshop by Cip Amarie.",
       "description": "Instructor led session on how to create an agent and train it into a formidable Autonomous Cloud Executive. Bring your laptop."
+    },
+    {
+      "id": "gf9-2026-05-14-2000",
+      "roomId": "gf9",
+      "title": "SPARC Your AI Roadmap",
+      "track": "TechBar",
+      "host": "Dani Ciobanu",
+      "date": "2026-05-14",
+      "start": "20:00",
+      "end": "20:45",
+      "capacity": 8,
+      "summary": "TechBar session led by Dani Ciobanu.",
+      "description": "TechBars are a hands-on experience where you can get help and insight on building your AI skills"
     }
   ]
 }
