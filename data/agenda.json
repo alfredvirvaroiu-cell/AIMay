@@ -35,7 +35,7 @@
       "id": "cafeteria",
       "name": "Cafeteria",
       "floor": "Ground Floor",
-      "capacityLabel": "60 seats"
+      "capacityLabel": "50 seats"
     }
   ],
   "events": [
@@ -47,7 +47,7 @@
       "date": "2026-05-14",
       "start": "16:30",
       "end": "17:00",
-      "capacity": 60,
+      "capacity": 50,
       "summary": "Kick off the event over coffee in the Cafeteria."
     },
     {
@@ -58,7 +58,7 @@
       "date": "2026-05-14",
       "start": "19:00",
       "end": "20:00",
-      "capacity": 60,
+      "capacity": 50,
       "summary": "Lunch break in the Cafeteria."
     },
     {
